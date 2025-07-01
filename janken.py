@@ -1,14 +1,15 @@
 import random
 
-options = ["グー", "チョキ", "パー"]
+options = ["✊", "✌", "✋"]
 user_score = 0
 computer_score = 0
+round_count = 1
 
-print("じゃんけん3回勝負、スタート！")
+print("じゃんけん！3回勝った方が勝ちです✨")
 
-for round in range(1, 4):
-    print(f"\n【第{round}回戦】")
-    user = input("グー・チョキ・パー のどれかを入力：")
+while user_score < 3 and computer_score < 3:
+    print(f"\n【第{round_count}回戦】")
+    user = input("✊・✌・✋ のどれかを入力：")
     computer = random.choice(options)
 
     print(f"あなた：{user}")
@@ -16,23 +17,21 @@ for round in range(1, 4):
 
     if user == computer:
         print("あいこ！")
-    elif (user == "グー" and computer == "チョキ") or \
-         (user == "チョキ" and computer == "パー") or \
-         (user == "パー" and computer == "グー"):
+    elif (user == "✊" and computer == "✌") or \
+         (user == "✌" and computer == "✋") or \
+         (user == "✋" and computer == "✊"):
         print("あなたの勝ち！")
         user_score += 1
     else:
         print("あなたの負け…")
         computer_score += 1
 
-# 最終結果の表示
-print("\n🎉 結果発表 🎉")
-print(f"あなたの勝ち数：{user_score}")
-print(f"コンピュータの勝ち数：{computer_score}")
+    print(f"スコア → あなた：{user_score}勝 | コンピュータ：{computer_score}勝")
+    round_count += 1
 
-if user_score > computer_score:
-    print("✨ あなたの勝利です！ ✨")
-elif user_score < computer_score:
-    print("💻 コンピュータの勝ちです…")
+# 勝敗の表示
+print("\n🎉 結果発表 🎉")
+if user_score == 3:
+    print("✨ あなたの勝利です！おめでとう！ ✨")
 else:
-    print("🤝 引き分けです！")
+    print("💻 コンピュータの勝ちです…また挑戦してね！")
